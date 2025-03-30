@@ -1,5 +1,8 @@
 import renderizarIdeias from "./modeloIdeias.js";
 
-renderizarIdeias();
+window.addEventListener("load", () => {
+    renderizarIdeias();
+})
+
 
 
