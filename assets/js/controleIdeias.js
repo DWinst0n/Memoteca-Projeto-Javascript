@@ -4,8 +4,14 @@ import renderizarIdeias from "./modeloIdeias.js";
 const conteudo = document.getElementById("pensamento-conteudo");
 const autor = document.getElementById("pensamento-autoria");
 
+let proseguir = true;
+
 const ControleIdeias = {
     adicionarIdeia() {
+        if (!conteudo.value.trim() || !autor.value.trim()) {
+            alert("Preencha os dados da ideia corretamente!"); 
+            return;
+        }
         const pensamento = {
             id: this.gerarIdAleatorio(),
             conteudo: conteudo.value,
@@ -15,18 +21,21 @@ const ControleIdeias = {
         renderizarIdeias(pensamento);
         this.reiniciarForm();
     },
-
     removerIdeia(ideia) {
         const confirmacao = confirm("Deseja excluir esse pensamento?");
         if (confirmacao) ideia.remove();
     },
-
     editarIdeia(ideia) {
         const ideiaTexto = ideia.querySelector(".pensamento-conteudo");
         const ideiaAutor = ideia.querySelector(".pensamento-autoria");
 
-        ideiaTexto.textContent = prompt("Edite sua nova ideia - O texto");
-        ideiaAutor.textContent = prompt("Edite sua nova ideia - O Autor");
+        const inicioForm = document.getElementById("form-titulo");
+        inicioForm.scrollIntoView({ behavior: "smooth"});
+
+        this.alterarAcaoForm();
+
+        conteudo.value = ideiaTexto.textContent;
+        autor.value = ideiaAutor.textContent;
     },
 
     gerarIdAleatorio() {
@@ -43,6 +52,18 @@ const ControleIdeias = {
     reiniciarForm () {
         conteudo.value = "";
         autor.value = "";
+    },
+    alterarAcaoForm (acaoRealizada) {
+        if (acaoRealizada) {
+            proseguir = true;
+        }
+        if (proseguir) {
+            const botoesForm = ["botao-salvar", "botao-editar"];
+            botoesForm.forEach(botao => {
+             document.getElementById(botao).classList.toggle("invisivel");
+            })
+        } else {return;}
+        proseguir = false;
     }
 };
 
