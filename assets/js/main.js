@@ -1,17 +1,24 @@
 import renderizarIdeias from "./modeloIdeias.js";
 import ControleIdeias from "./controleIdeias.js";
 
-window.addEventListener("load", () => {
-    renderizarIdeias();
-});
-
 const mainFormulário = document.getElementById("form-container");
-mainFormulário.addEventListener("submit", (e) => {
-    e.preventDefault();
-    ControleIdeias.adicionarIdeia();
+
+window.addEventListener("DOMContentLoaded", () => {
+    renderizarIdeias();
+
+    mainFormulário.addEventListener("submit", (e) => {
+        e.preventDefault();
+        switch (e.submitter.id) {
+            case "botao-salvar":
+/*                 ControleIdeias.adicionarIdeia();
+ */                break
+            case "botao-editar":
+                ControleIdeias.alterarAcaoForm(true);
+                break
+            default:
+                break;
+        }
+   });
+    mainFormulário.querySelector("#botao-cancelar").addEventListener("click", ControleIdeias.reiniciarForm);
 });
-mainFormulário.querySelector("#botao-cancelar").addEventListener("click", () => ControleIdeias.reiniciarForm());
-
-
-
 
