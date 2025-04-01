@@ -1,11 +1,17 @@
 import api from "./api.js";
-import { editarIdeia, removerIdeia } from "./controleIdeias.js";
+import ControleIdeias from "./controleIdeias.js";
 
 const listaPensamentos = document.getElementById("lista-pensamentos");
 
-export default async function renderizarIdeias() {
+export default async function renderizarIdeias(ideiaNova) {
+    let pensamentos;
+    if (ideiaNova) {
+        pensamentos = [ideiaNova];
+    } else {
+        listaPensamentos.innerHTML = "";
+        pensamentos = await api.buscarIdeias();
+    }
     try {
-        const pensamentos = await api.buscarIdeias();
         pensamentos.forEach(ideia => {
             const itemIdeia = document.createElement("li");
             itemIdeia.classList.add("li-pensamento");
@@ -36,14 +42,14 @@ export default async function renderizarIdeias() {
             const botaoEditarImg = document.createElement("img");
             botaoEditarImg.src = "assets/imagens/icone-editar.png";
             botaoEditar.append(botaoEditarImg);
-            botaoEditar.addEventListener("click", () => editarIdeia(itemIdeia));
+            botaoEditar.addEventListener("click", () => ControleIdeias.editarIdeia(itemIdeia));
             
             const botaoExcluir = document.createElement("button");
             botaoExcluir.classList.add("botao-excluir");
             const botaoExcluirImg = document.createElement("img");
             botaoExcluirImg.src = "assets/imagens/icone-excluir.png";
             botaoExcluir.append(botaoExcluirImg);
-            botaoExcluir.addEventListener("click", () => removerIdeia(itemIdeia));
+            botaoExcluir.addEventListener("click", () => ControleIdeias.removerIdeia(itemIdeia));
 
             containerBotoes.append(botaoEditar);
             containerBotoes.append(botaoExcluir);

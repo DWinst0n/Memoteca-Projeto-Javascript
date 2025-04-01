@@ -1,13 +1,28 @@
-const enderecoAtual = window.location.href;
-let href = enderecoAtual.split("index.html")[0];
-const enderecoJson = href + "assets/js/config/db.json";
+const enderecoJsonLocal = "http://localhost:3000/pensamentos";
 
 const api = {
-    buscarIdeias: async function pensamentosJson() {
-        const res = await fetch(enderecoJson);
-        const ideiasJson = (await res.json());
-        const ideias = ideiasJson.pensamentos;
-        return ideias;
+    buscarIdeias: async function () {
+        try {
+            const res = await fetch(enderecoJsonLocal);
+            const ideiasJson = await res.json();
+            return ideiasJson;
+        } catch (error) {
+            console.error("Um erro inesperado aconteceu: " + error);
+        }
+    },
+    adicionarIdeia: async function (pensamento) {
+        try {
+            const res = await fetch(enderecoJsonLocal, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "Application/json"
+                },
+                body: JSON.stringify(pensamento),
+            });
+            return await res.json();
+        } catch (error){
+            console.log(error);
+        }
     },
 }
 export default api;
