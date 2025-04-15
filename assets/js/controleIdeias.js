@@ -35,12 +35,13 @@ const ControleIdeias = {
         }
 
         const ideiaEncontrada = await api.buscarIdeiaPorId(idReferente.value);
-        console.log(ideiaEncontrada);
         ideiaEncontrada.conteudo = conteudo.value;
         ideiaEncontrada.autoria = autor.value;
 
-        api.editarIdeia(ideiaEncontrada);
-        eventoEmAndamento--; console.log(eventoEmAndamento);
+        await api.editarIdeia(ideiaEncontrada);
+        eventoEmAndamento--;
+        this.reiniciarForm();
+        renderizarIdeias();
     },
 
     gerarIdAleatorio() {
@@ -55,7 +56,7 @@ const ControleIdeias = {
         return caracteresEscolhidos.join("");
     },
     reiniciarForm () {
-        acaoFormTitulo.textContent = "Adicione um pensamento novo:"
+        acaoFormTitulo.textContent = "Adicione um pensamento novo:";
         conteudo.value = "";
         autor.value = "";
         this.alterarDisplay();
@@ -67,7 +68,7 @@ const ControleIdeias = {
             document.querySelector(elemento).classList.toggle("invisivel");
         })
         if (justAdd) {
-            acaoFormTitulo.textContent = "Adicione um pensamento novo:"
+            acaoFormTitulo.textContent = "Adicione um pensamento novo:";
             if (document.getElementById("botao-salvar").classList.contains("invisivel")) {
                 this.alterarDisplayBotoes();
             }
@@ -84,7 +85,7 @@ const ControleIdeias = {
         const ideiaTexto = ideia.querySelector(".pensamento-conteudo");
         const ideiaAutor = ideia.querySelector(".pensamento-autoria");
 
-        acaoFormTitulo.textContent = "Edite sua ideia:"
+        acaoFormTitulo.textContent = "Edite sua ideia:";
         conteudo.value = ideiaTexto.textContent;
         autor.value = ideiaAutor.textContent;
         idReferente.value = ideia.id;
