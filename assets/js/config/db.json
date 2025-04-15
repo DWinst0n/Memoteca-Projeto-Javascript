@@ -1,47 +1,224 @@
 {
-    "pensamentos": [
-      { "id": "2a56", "conteudo": "Vc faz TI? Conserta meu celular!", "autoria": "Grupo da família" },
-      { "id": "4c7d", "conteudo": "Da vida reclama, mas sem ela não vive!", "autoria": "Mestre Yoda" },
-      { "id": "5b8a", "conteudo": "Na minha máquina funciona!", "autoria": "Dev" },
-      { "id": "68uy", "conteudo": "Esse é de laranja que parece de limão, mas tem gosto de tamarindo!", "autoria": "Chaves" },
-      { "id": "b807", "conteudo": "Melhor professor, o fracasso é!", "autoria": "Mestre Yoda" },
-      { "id": "9f3c", "conteudo": "Você não é todo mundo!", "autoria": "Mãe" },
-      { "id": "6a2b", "conteudo": "Foi sem querer querendo!", "autoria": "Chaves" },
-      { "id": "7e2a", "conteudo": "Que a força esteja com você!", "autoria": "Mestre Yoda" },
-      { "id": "5c8f", "conteudo": "Resolver o bug não consegue? Esfriar a cabeça vc deve.", "autoria": "Mestre Yoda (Versão dev)" },
-      { "id": "2d6e", "conteudo": "Não faça drama, faça café! :)", "autoria": "Dev" },
-      { "id": "3f1a", "conteudo": "Conserta minha impressora?", "autoria": "Grupo da família" },
-      { "id": "8b4c", "conteudo": "A vingança nunca é plena... mata a alma e a envenena...", "autoria": "Seu Madruga" },
-      { "id": "4d2e", "conteudo": "Se eu for aí e achar, eu esfrego na sua cara!", "autoria": "Mãe" },
-      { "id": "a12b", "conteudo": "A diferença entre genialidade e estupidez é que a genialidade tem limite.", "autoria": "Albert Einstein" },
-      { "id": "b24c", "conteudo": "Houston, temos um problema.", "autoria": "Apollo 13" },
-      { "id": "c35d", "conteudo": "Com grandes poderes vêm grandes responsabilidades.", "autoria": "Tio Ben" },
-      { "id": "d46e", "conteudo": "Não é um bug, é uma feature!", "autoria": "Dev" },
-      { "id": "e57f", "conteudo": "Se a vida te der limões, faça uma limonada!", "autoria": "Provérbio popular" },
-      { "id": "f68g", "conteudo": "Paciência você deve ter, jovem Padawan.", "autoria": "Mestre Yoda" },
-      { "id": "g79h", "conteudo": "A persistência realiza o impossível.", "autoria": "Provérbio chinês" },
-      { "id": "h89i", "conteudo": "Keep calm and carry on.", "autoria": "Governo Britânico" },
-      { "id": "i91j", "conteudo": "Eu sou inevitável.", "autoria": "Thanos" },
-      { "id": "j02k", "conteudo": "A vida é como andar de bicicleta. Para manter o equilíbrio, você deve continuar se movendo.", "autoria": "Albert Einstein" },
-      { "id": "k13l", "conteudo": "Se não pode convencê-los, confunda-os.", "autoria": "Abraham Lincoln (apócrifo)" },
-      { "id": "l24m", "conteudo": "O sucesso é ir de fracasso em fracasso sem perder o entusiasmo.", "autoria": "Winston Churchill" },
-      { "id": "m35n", "conteudo": "Por que tão sério?", "autoria": "Coringa" },
-      { "id": "n46o", "conteudo": "A verdade está lá fora.", "autoria": "Arquivo X" },
-      { "id": "o57p", "conteudo": "Viva longa e próspera.", "autoria": "Spock" },
-      { "id": "p68q", "conteudo": "A única coisa que devemos temer é o próprio medo.", "autoria": "Franklin D. Roosevelt" },
-      { "id": "q79r", "conteudo": "O caminho para a grandeza é longo, mas vale cada passo.", "autoria": "Provérbio japonês" },
-      { "id": "r89s", "conteudo": "Sorria, você está sendo filmado!", "autoria": "Câmera de segurança" },
-      { "id": "s91t", "conteudo": "Ao infinito e além!", "autoria": "Buzz Lightyear" },
-      { "id": "t02u", "conteudo": "No pain, no gain!", "autoria": "Treinador fitness" },
-      { "id": "u13v", "conteudo": "A simplicidade é o último grau da sofisticação.", "autoria": "Leonardo da Vinci" },
-      { "id": "v24w", "conteudo": "As palavras são, na minha nada humilde opinião, nossa inesgotável fonte de magia.", "autoria": "Dumbledore" },
-      { "id": "w35x", "conteudo": "Nada é verdade, tudo é permitido.", "autoria": "Credo dos Assassinos" },
-      { "id": "x46y", "conteudo": "Que os jogos comecem!", "autoria": "Jogos Vorazes" },
-      { "id": "y57z", "conteudo": "Seja água, meu amigo.", "autoria": "Bruce Lee" },
-      { "id": "z68a", "conteudo": "É perigoso ir sozinho! Pegue isto.", "autoria": "The Legend of Zelda" },
-      { "id": "a79b", "conteudo": "Eu voltarei.", "autoria": "Exterminador do Futuro" },
-      { "id": "b89c", "conteudo": "Não, eu sou o seu pai.", "autoria": "Darth Vader" },
-      { "id": "c91d", "conteudo": "Nunca diga nunca.", "autoria": "James Bond" },
-      { "id": "d02e", "conteudo": "Hakuna Matata!", "autoria": "Timão e Pumba" }
-    ]
+  "pensamentos": [
+    {
+      "id": "2a56",
+      "conteudo": "Vc faz TI? Conserta meu celular!",
+      "autoria": "Grupo da família"
+    },
+    {
+      "id": "4c7d",
+      "conteudo": "Da vida reclama, mas sem ela não vive!",
+      "autoria": "Mestre Yoda"
+    },
+    {
+      "id": "5b8a",
+      "conteudo": "Nem na minha máquina funciona...",
+      "autoria": "Davi Winston"
+    },
+    {
+      "id": "68uy",
+      "conteudo": "Esse é de laranja que parece de limão, mas tem gosto de tamarindo!",
+      "autoria": "Chaves"
+    },
+    {
+      "id": "b807",
+      "conteudo": "Melhor professor, o fracasso é!",
+      "autoria": "Mestre Yoda"
+    },
+    {
+      "id": "9f3c",
+      "conteudo": "Você não é todo mundo!",
+      "autoria": "Mãe"
+    },
+    {
+      "id": "6a2b",
+      "conteudo": "Foi sem querer querendo!",
+      "autoria": "Chaves"
+    },
+    {
+      "id": "7e2a",
+      "conteudo": "Que a força esteja com você!",
+      "autoria": "Mestre Yoda"
+    },
+    {
+      "id": "5c8f",
+      "conteudo": "Resolver o bug não consegue? Esfriar a cabeça vc deve.",
+      "autoria": "Mestre Yoda (Versão dev)"
+    },
+    {
+      "id": "2d6e",
+      "conteudo": "Não faça drama, faça café! :)",
+      "autoria": "Dev"
+    },
+    {
+      "id": "3f1a",
+      "conteudo": "Conserta minha impressora?",
+      "autoria": "Grupo da família"
+    },
+    {
+      "id": "8b4c",
+      "conteudo": "A vingança nunca é plena... mata a alma e a envenena...",
+      "autoria": "Seu Madruga"
+    },
+    {
+      "id": "4d2e",
+      "conteudo": "Se eu for aí e achar, eu esfrego na sua cara!",
+      "autoria": "Mãe"
+    },
+    {
+      "id": "a12b",
+      "conteudo": "A diferença entre genialidade e estupidez é que a genialidade tem limite.",
+      "autoria": "Albert Einstein"
+    },
+    {
+      "id": "b24c",
+      "conteudo": "Houston, temos um problema.",
+      "autoria": "Apollo 13"
+    },
+    {
+      "id": "c35d",
+      "conteudo": "Com grandes poderes vêm grandes responsabilidades.",
+      "autoria": "Tio Ben"
+    },
+    {
+      "id": "d46e",
+      "conteudo": "Não é um bug, é um processo em andamento....",
+      "autoria": "Davi Winston"
+    },
+    {
+      "id": "e57f",
+      "conteudo": "Se a vida te der limões, faça uma limonada!",
+      "autoria": "Provérbio popular"
+    },
+    {
+      "id": "f68g",
+      "conteudo": "Paciência você deve ter, jovem Padawan.",
+      "autoria": "Mestre Yoda"
+    },
+    {
+      "id": "g79h",
+      "conteudo": "A persistência realiza o impossível.",
+      "autoria": "Provérbio chinês"
+    },
+    {
+      "id": "h89i",
+      "conteudo": "Keep calm and carry on.",
+      "autoria": "Governo Britânico"
+    },
+    {
+      "id": "i91j",
+      "conteudo": "Eu sou inevitável.",
+      "autoria": "Thanos"
+    },
+    {
+      "id": "j02k",
+      "conteudo": "A vida é como andar de bicicleta. Para manter o equilíbrio, você deve continuar se movendo.",
+      "autoria": "Albert Einstein"
+    },
+    {
+      "id": "k13l",
+      "conteudo": "Se não pode convencê-los, confunda-os.",
+      "autoria": "Abraham Lincoln (apócrifo)"
+    },
+    {
+      "id": "l24m",
+      "conteudo": "O sucesso é ir de fracasso em fracasso sem perder o entusiasmo.",
+      "autoria": "Winston Churchill"
+    },
+    {
+      "id": "m35n",
+      "conteudo": "Por que tão sério?",
+      "autoria": "Coringa"
+    },
+    {
+      "id": "n46o",
+      "conteudo": "A verdade está lá fora.",
+      "autoria": "Arquivo X"
+    },
+    {
+      "id": "o57p",
+      "conteudo": "Viva longa e próspera.",
+      "autoria": "Spock"
+    },
+    {
+      "id": "p68q",
+      "conteudo": "A única coisa que devemos temer é o próprio medo.",
+      "autoria": "Franklin D. Roosevelt"
+    },
+    {
+      "id": "q79r",
+      "conteudo": "O caminho para a grandeza é longo, mas vale cada passo.",
+      "autoria": "Provérbio japonês"
+    },
+    {
+      "id": "r89s",
+      "conteudo": "Sorria, você está sendo filmado!",
+      "autoria": "Câmera de segurança"
+    },
+    {
+      "id": "s91t",
+      "conteudo": "Ao infinito e além!",
+      "autoria": "Buzz Lightyear"
+    },
+    {
+      "id": "t02u",
+      "conteudo": "No pain, no gain!",
+      "autoria": "Treinador fitness"
+    },
+    {
+      "id": "u13v",
+      "conteudo": "A simplicidade é o último grau da sofisticação.",
+      "autoria": "Leonardo da Vinci"
+    },
+    {
+      "id": "v24w",
+      "conteudo": "As palavras são, na minha nada humilde opinião, nossa inesgotável fonte de magia.",
+      "autoria": "Dumbledore"
+    },
+    {
+      "id": "w35x",
+      "conteudo": "Nada é verdade, tudo é permitido.",
+      "autoria": "Credo dos Assassinos"
+    },
+    {
+      "id": "x46y",
+      "conteudo": "Que os jogos comecem!",
+      "autoria": "Jogos Vorazes"
+    },
+    {
+      "id": "y57z",
+      "conteudo": "Seja água, meu amigo.",
+      "autoria": "Bruce Lee"
+    },
+    {
+      "id": "z68a",
+      "conteudo": "É perigoso ir sozinho! Pegue isto.",
+      "autoria": "The Legend of Zelda"
+    },
+    {
+      "id": "a79b",
+      "conteudo": "Eu voltarei.",
+      "autoria": "Exterminador do Futuro"
+    },
+    {
+      "id": "b89c",
+      "conteudo": "Não, eu sou o seu pai.",
+      "autoria": "Darth Vader"
+    },
+    {
+      "id": "c91d",
+      "conteudo": "Nunca diga nunca.",
+      "autoria": "James Bond"
+    },
+    {
+      "id": "d02e",
+      "conteudo": "Hakuna Matata!",
+      "autoria": "Timão e Pumba"
+    },
+    {
+      "id": "40si",
+      "conteudo": "Finalmente funciona! :-D",
+      "autoria": "Davi Winston"
+    }
+  ]
 }
