@@ -15,7 +15,7 @@ export default async function renderizarIdeias(ideiaNova) {
         pensamentos.forEach(ideia => {
             const itemIdeia = document.createElement("li");
             itemIdeia.classList.add("li-pensamento");
-            itemIdeia.dataset.id = ideia.id;
+            itemIdeia.id = ideia.id;
 
             const aspasImg = document.createElement("img");
             aspasImg.src = "assets/imagens/aspas-azuis.png";
@@ -42,7 +42,7 @@ export default async function renderizarIdeias(ideiaNova) {
             const botaoEditarImg = document.createElement("img");
             botaoEditarImg.src = "assets/imagens/icone-editar.png";
             botaoEditar.append(botaoEditarImg);
-            botaoEditar.addEventListener("click", () => ControleIdeias.editarIdeia(itemIdeia));
+            botaoEditar.addEventListener("click", () => ControleIdeias.mostrarNoForm(itemIdeia));
             
             const botaoExcluir = document.createElement("button");
             botaoExcluir.classList.add("botao-excluir");

@@ -3,8 +3,11 @@ import renderizarIdeias from "./modeloIdeias.js";
 
 const conteudo = document.getElementById("pensamento-conteudo");
 const autor = document.getElementById("pensamento-autoria");
+const idReferente =  document.getElementById("pensamento-id");
 
-let proseguir = true;
+let acaoFormTitulo = document.getElementById("form-titulo");
+
+let eventoEmAndamento = 0;
 
 const ControleIdeias = {
     adicionarIdeia() {
@@ -13,7 +16,7 @@ const ControleIdeias = {
             return;
         }
         const pensamento = {
-            id: this.gerarIdAleatorio(),
+            id: ControleIdeias.gerarIdAleatorio(),
             conteudo: conteudo.value,
             autoria: autor.value,
         };
@@ -25,17 +28,19 @@ const ControleIdeias = {
         const confirmacao = confirm("Deseja excluir esse pensamento?");
         if (confirmacao) ideia.remove();
     },
-    editarIdeia(ideia) {
-        const ideiaTexto = ideia.querySelector(".pensamento-conteudo");
-        const ideiaAutor = ideia.querySelector(".pensamento-autoria");
+    editarIdeia: async function () {
+        if (!conteudo.value.trim() || !autor.value.trim()) {
+            alert("Preencha os dados da ideia corretamente!"); 
+            return;
+        }
 
-        const inicioForm = document.getElementById("form-titulo");
-        inicioForm.scrollIntoView({ behavior: "smooth"});
+        const ideiaEncontrada = await api.buscarIdeiaPorId(idReferente.value);
+        console.log(ideiaEncontrada);
+        ideiaEncontrada.conteudo = conteudo.value;
+        ideiaEncontrada.autoria = autor.value;
 
-        this.alterarAcaoForm();
-
-        conteudo.value = ideiaTexto.textContent;
-        autor.value = ideiaAutor.textContent;
+        api.editarIdeia(ideiaEncontrada);
+        eventoEmAndamento--; console.log(eventoEmAndamento);
     },
 
     gerarIdAleatorio() {
@@ -50,20 +55,49 @@ const ControleIdeias = {
         return caracteresEscolhidos.join("");
     },
     reiniciarForm () {
+        acaoFormTitulo.textContent = "Adicione um pensamento novo:"
         conteudo.value = "";
         autor.value = "";
+        this.alterarDisplay();
+        if (eventoEmAndamento === 1) eventoEmAndamento--;
     },
-    alterarAcaoForm (acaoRealizada) {
-        if (acaoRealizada) {
-            proseguir = true;
+    alterarDisplay (justAdd = false) {
+        const display = [".show__form", ".form__container"];
+        display.forEach(elemento => {
+            document.querySelector(elemento).classList.toggle("invisivel");
+        })
+        if (justAdd) {
+            acaoFormTitulo.textContent = "Adicione um pensamento novo:"
+            if (document.getElementById("botao-salvar").classList.contains("invisivel")) {
+                this.alterarDisplayBotoes();
+            }
         }
-        if (proseguir) {
-            const botoesForm = ["botao-salvar", "botao-editar"];
-            botoesForm.forEach(botao => {
-             document.getElementById(botao).classList.toggle("invisivel");
-            })
-        } else {return;}
-        proseguir = false;
+    },
+    alterarDisplayBotoes() {
+        const botoesForm = ["botao-salvar", "botao-editar"];
+        botoesForm.forEach(botao => {
+         document.getElementById(botao).classList.toggle("invisivel");
+        })
+    }, 
+    mostrarNoForm (ideia) {
+
+        const ideiaTexto = ideia.querySelector(".pensamento-conteudo");
+        const ideiaAutor = ideia.querySelector(".pensamento-autoria");
+
+        acaoFormTitulo.textContent = "Edite sua ideia:"
+        conteudo.value = ideiaTexto.textContent;
+        autor.value = ideiaAutor.textContent;
+        idReferente.value = ideia.id;
+
+        const inicioForm = document.getElementById("form-titulo");
+        inicioForm.scrollIntoView({ behavior: "smooth"});
+
+        if (eventoEmAndamento === 1) return;
+        if (document.getElementById("botao-editar").classList.contains("invisivel")) {
+            this.alterarDisplayBotoes();
+        }
+        this.alterarDisplay();
+        eventoEmAndamento++;
     }
 };
 

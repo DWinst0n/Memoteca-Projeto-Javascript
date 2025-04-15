@@ -10,15 +10,17 @@ window.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         switch (e.submitter.id) {
             case "botao-salvar":
-/*                 ControleIdeias.adicionarIdeia();
- */                break
+                  ControleIdeias.adicionarIdeia();
+                    break
             case "botao-editar":
-                ControleIdeias.alterarAcaoForm(true);
+                ControleIdeias.editarIdeia();
                 break
             default:
                 break;
         }
    });
-    mainFormulário.querySelector("#botao-cancelar").addEventListener("click", ControleIdeias.reiniciarForm);
+    mainFormulário.querySelector("#botao-cancelar").addEventListener("click", () => ControleIdeias.reiniciarForm());
+    const botaoMostrarForm = document.querySelector(".show__form");
+    botaoMostrarForm.onclick = () => ControleIdeias.alterarDisplay(true);
 });
 

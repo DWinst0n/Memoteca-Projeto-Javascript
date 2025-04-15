@@ -10,6 +10,15 @@ const api = {
             console.error("Um erro inesperado aconteceu: " + error);
         }
     },
+    buscarIdeiaPorId: async function (id) {
+        try {
+            const res = await fetch(`${enderecoJsonLocal}/${id}`);
+            const ideiaJson = await res.json();
+            return ideiaJson;
+        } catch (error) {
+            console.error("Um erro inesperado aconteceu: " + error);
+        }
+    },
     adicionarIdeia: async function (pensamento) {
         try {
             const res = await fetch(enderecoJsonLocal, {
@@ -24,5 +33,19 @@ const api = {
             console.log(error);
         }
     },
+    editarIdeia: async function (pensamento) {
+        try {
+            const res = await fetch(`${enderecoJsonLocal}/${pensamento.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "Application/json"
+                },
+                body: JSON.stringify(pensamento),
+            });
+            return await res.json();
+        } catch (error){
+            console.log(error);
+        }
+    }
 }
 export default api;
