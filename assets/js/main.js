@@ -1,5 +1,6 @@
 import renderizarIdeias from "./modeloIdeias.js";
 import ControleIdeias from "./controleIdeias.js";
+import api from "./api.js";
 
 const mainFormulário = document.getElementById("form-container");
 
@@ -24,3 +25,9 @@ window.addEventListener("DOMContentLoaded", () => {
     botaoMostrarForm.onclick = () => ControleIdeias.alterarDisplay(true);
 });
 
+const idsGerados = new Set();
+const pensamentos = await api.buscarIdeias();
+pensamentos.forEach(ideia => {
+    idsGerados.add(ideia.id)
+});
+console.log(idsGerados)

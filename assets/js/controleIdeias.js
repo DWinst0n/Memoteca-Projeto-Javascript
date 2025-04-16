@@ -4,13 +4,14 @@ import renderizarIdeias from "./modeloIdeias.js";
 const conteudo = document.getElementById("pensamento-conteudo");
 const autor = document.getElementById("pensamento-autoria");
 const idReferente =  document.getElementById("pensamento-id");
+const idsGerados = new Set();
 
 let acaoFormTitulo = document.getElementById("form-titulo");
 
 let eventoEmAndamento = 0;
 
 const ControleIdeias = {
-    adicionarIdeia() {
+    adicionarIdeia: async function() {
         if (!conteudo.value.trim() || !autor.value.trim()) {
             alert("Preencha os dados da ideia corretamente!"); 
             return;
@@ -20,11 +21,16 @@ const ControleIdeias = {
             conteudo: conteudo.value,
             autoria: autor.value,
         };
-        api.adicionarIdeia(pensamento);
+        await api.adicionarIdeia(pensamento);
         renderizarIdeias(pensamento);
+        this.renderizarIds();
         this.reiniciarForm();
     },
     removerIdeia(ideia) {
+        if (eventoEmAndamento === 1) {
+            this.reiniciarForm();
+        }
+
         const confirmacao = confirm("Deseja excluir esse pensamento?");
         if (confirmacao) ideia.remove();
     },
@@ -44,16 +50,27 @@ const ControleIdeias = {
         renderizarIdeias();
     },
 
-    gerarIdAleatorio() {
+    gerarIdAleatorio: async function () {
+        await this.renderizarIds();
         const caracteres = "abcdefghijklmnopqrstuvwxyz0987654321";
         const caracteresLista = caracteres.split("");
         let caracteresEscolhidos = [];
-
-        for (let i = 0; i < 4; i++) {
-            const escolhido = caracteresLista[Math.floor(Math.random() * caracteresLista.length)];
-            caracteresEscolhidos.push(escolhido);
-        }
-        return caracteresEscolhidos.join("");
+        let id;
+        do {
+            for (let i = 0; i < 4; i++) {
+                const escolhido = caracteresLista[Math.floor(Math.random() * caracteresLista.length)];
+                caracteresEscolhidos.push(escolhido);
+            }
+            id = caracteresEscolhidos.join("");
+        } while (idsGerados.has(id));
+        idsGerados.add(id);
+        return id;
+    },
+    renderizarIds: async function () {
+        const pensamentos = await api.buscarIdeias();
+        pensamentos.forEach(ideia => {
+            idsGerados.add(ideia.id)
+        });
     },
     reiniciarForm () {
         acaoFormTitulo.textContent = "Adicione um pensamento novo:";
@@ -101,5 +118,6 @@ const ControleIdeias = {
         eventoEmAndamento++;
     }
 };
+
 
 export default ControleIdeias;
