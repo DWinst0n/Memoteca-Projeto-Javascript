@@ -32,7 +32,10 @@ const ControleIdeias = {
         }
 
         const confirmacao = confirm("Deseja excluir esse pensamento?");
-        if (confirmacao) ideia.remove();
+        if (confirmacao) {
+            ideia.remove();
+            api.removerIdeia(ideia);
+        }
     },
     editarIdeia: async function () {
         if (!conteudo.value.trim() || !autor.value.trim()) {

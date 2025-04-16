@@ -46,11 +46,6 @@
       "autoria": "Mestre Yoda (Versão dev)"
     },
     {
-      "id": "2d6e",
-      "conteudo": "Não faça drama, faça café! :)",
-      "autoria": "Dev"
-    },
-    {
       "id": "3f1a",
       "conteudo": "Conserta minha impressora?",
       "autoria": "Grupo da família"
@@ -116,11 +111,6 @@
       "autoria": "Albert Einstein"
     },
     {
-      "id": "k13l",
-      "conteudo": "Se não pode convencê-los, confunda-os.",
-      "autoria": "Abraham Lincoln (apócrifo)"
-    },
-    {
       "id": "l24m",
       "conteudo": "O sucesso é ir de fracasso em fracasso sem perder o entusiasmo.",
       "autoria": "Winston Churchill"
@@ -129,11 +119,6 @@
       "id": "m35n",
       "conteudo": "Por que tão sério?",
       "autoria": "Coringa"
-    },
-    {
-      "id": "n46o",
-      "conteudo": "A verdade está lá fora.",
-      "autoria": "Arquivo X"
     },
     {
       "id": "o57p",
@@ -218,6 +203,11 @@
     {
       "id": "40si",
       "conteudo": "Finalmente funciona! :-D",
+      "autoria": "Davi Winston"
+    },
+    {
+      "id": {},
+      "conteudo": "Adicionando pensamento",
       "autoria": "Davi Winston"
     }
   ]

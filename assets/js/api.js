@@ -46,6 +46,16 @@ const api = {
         } catch (error){
             console.log(error);
         }
+    },
+    removerIdeia: async function (pensamento) {
+        console.log(pensamento.id)
+        try {
+            await fetch(`${enderecoJsonLocal}/${pensamento.id}`, {
+                method: "DELETE",
+            });
+        } catch (error){
+            console.log(error);
+        }
     }
 }
 export default api;
