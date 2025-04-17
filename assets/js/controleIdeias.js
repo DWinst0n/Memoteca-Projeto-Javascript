@@ -17,10 +17,13 @@ const ControleIdeias = {
             return;
         }
         const pensamento = {
-            id: ControleIdeias.gerarIdAleatorio(),
+            id: await ControleIdeias.gerarIdAleatorio(),
             conteudo: conteudo.value,
             autoria: autor.value,
         };
+
+        console.log(pensamento);
+
         await api.adicionarIdeia(pensamento);
         renderizarIdeias(pensamento);
         this.renderizarIds();

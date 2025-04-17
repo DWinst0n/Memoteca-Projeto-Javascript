@@ -48,7 +48,6 @@ const api = {
         }
     },
     removerIdeia: async function (pensamento) {
-        console.log(pensamento.id)
         try {
             await fetch(`${enderecoJsonLocal}/${pensamento.id}`, {
                 method: "DELETE",

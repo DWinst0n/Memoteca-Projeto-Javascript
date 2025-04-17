@@ -24,10 +24,3 @@ window.addEventListener("DOMContentLoaded", () => {
     const botaoMostrarForm = document.querySelector(".show__form");
     botaoMostrarForm.onclick = () => ControleIdeias.alterarDisplay(true);
 });
-
-const idsGerados = new Set();
-const pensamentos = await api.buscarIdeias();
-pensamentos.forEach(ideia => {
-    idsGerados.add(ideia.id)
-});
-console.log(idsGerados)
