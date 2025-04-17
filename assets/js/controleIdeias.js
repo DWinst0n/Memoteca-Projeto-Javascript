@@ -21,9 +21,7 @@ const ControleIdeias = {
             conteudo: conteudo.value,
             autoria: autor.value,
         };
-
-        console.log(pensamento);
-
+        
         await api.adicionarIdeia(pensamento);
         renderizarIdeias(pensamento);
         this.renderizarIds();
@@ -47,6 +45,11 @@ const ControleIdeias = {
         }
 
         const ideiaEncontrada = await api.buscarIdeiaPorId(idReferente.value);
+        if (!ideiaEncontrada) {
+            alert("Ideia não encontrada!");
+            return;
+        }
+
         ideiaEncontrada.conteudo = conteudo.value;
         ideiaEncontrada.autoria = autor.value;
 
