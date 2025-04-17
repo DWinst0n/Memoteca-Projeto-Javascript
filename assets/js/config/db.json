@@ -121,11 +121,6 @@
       "autoria": "Coringa"
     },
     {
-      "id": "o57p",
-      "conteudo": "Viva longa e próspera.",
-      "autoria": "Spock"
-    },
-    {
       "id": "p68q",
       "conteudo": "A única coisa que devemos temer é o próprio medo.",
       "autoria": "Franklin D. Roosevelt"
@@ -144,11 +139,6 @@
       "id": "s91t",
       "conteudo": "Ao infinito e além!",
       "autoria": "Buzz Lightyear"
-    },
-    {
-      "id": "t02u",
-      "conteudo": "No pain, no gain!",
-      "autoria": "Treinador fitness"
     },
     {
       "id": "u13v",
@@ -201,12 +191,7 @@
       "autoria": "Timão e Pumba"
     },
     {
-      "id": "40si",
-      "conteudo": "Finalmente funciona! :-D",
-      "autoria": "Davi Winston"
-    },
-    {
-      "id": {},
+      "id": "9eb8",
       "conteudo": "Adicionando pensamento",
       "autoria": "Davi Winston"
     }
