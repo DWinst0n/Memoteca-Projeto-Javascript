@@ -12,6 +12,11 @@ export default async function renderizarIdeias(ideiaNova) {
         pensamentos = await api.buscarIdeias();
     }
     try {
+        if (!Array.isArray(pensamentos)) {
+            console.error("Erro: pensamentos não é um array", pensamentos);
+            pensamentos = [];
+        }
+
         pensamentos.forEach(ideia => {
             const itemIdeia = document.createElement("li");
             itemIdeia.classList.add("li-pensamento");
