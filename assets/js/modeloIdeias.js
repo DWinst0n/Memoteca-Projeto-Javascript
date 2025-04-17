@@ -61,6 +61,13 @@ export default async function renderizarIdeias(ideiaNova) {
 
             listaPensamentos.append(itemIdeia);
         });
+
+        const listaVaziaMensagem = document.querySelector(".lista__vazia");
+        if (listaPensamentos.childElementCount === 0) {
+            listaVaziaMensagem.style.display = "flex";
+        } else {
+            listaVaziaMensagem.style.display = "none";
+        }
     } catch (error) {
         console.error("Erro ao renderizar ideias: ", error);
     }

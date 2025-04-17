@@ -304,6 +304,21 @@ span {
   margin: 6rem 0 3rem 0;
 }
 
+.lista__vazia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.lista__vazia__mensagem {
+  color: var(--Azul-Dark);
+  font-size: clamp(0.75rem, 1.5vw, 1.375rem)
+}
+.lista__vazia__imagem {
+    width: 12.25%;
+}
+
 .invisivel {
   display: none;
 }
