@@ -165,8 +165,8 @@ const apiOps = {
 };
 
 async function initApi() {
-    const isApiAvailable = await checkApiAvailability();
-    usarLocalStorage = !isApiAvailable;
+    const apiDisponivel = await checkApiAvailability();
+    usarLocalStorage = !apiDisponivel;
     
     if (usarLocalStorage) {
         await initializeLocalStorage();

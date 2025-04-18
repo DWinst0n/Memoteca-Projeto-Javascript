@@ -216,7 +216,7 @@ h2, h3 {
 
 #lista-pensamentos-container {
   width: 100%;
-  max-width: 75rem;
+  max-width: 92.5vw;
   margin: 2.5rem 0;
 }
 
@@ -229,24 +229,24 @@ h2, h3 {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  row-gap: 2rem;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .li-pensamento {
   position: relative;
   padding: 1rem;
+  padding-bottom: 2.5rem;
   background: var(--Branco, #FFF);
   box-shadow: 0.5rem 0.5rem 0px 0px #154580;
-  flex: 1 1 calc(33.333% - 1.5rem);
-  max-width: calc(33.333% - 1.5rem);
-  min-width: 24rem;
-  min-height: 19.6875rem;
+  flex: 2 1 clamp(5rem, 10vw, 75%);
+  max-width: max-content;
+  min-width: clamp(6rem, 30vw, 90%);
+  max-height: 24.75rem;
   display: flex;
   flex-direction: column;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  hyphens: auto;
 }
 
 .icone-aspas {
@@ -313,7 +313,9 @@ span {
 }
 .lista__vazia__mensagem {
   color: var(--Azul-Dark);
-  font-size: clamp(0.75rem, 1.5vw, 1.375rem)
+  font-size: clamp(0.75rem, 1.5vw, 1.375rem);
+  line-height: 33px;
+  text-align: center;
 }
 .lista__vazia__imagem {
     width: 12.25%;
@@ -321,4 +323,19 @@ span {
 
 .invisivel {
   display: none;
+}
+
+@media  screen and (max-width: 475px) {
+  #lista-pensamentos {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .li-pensamento {
+    align-self: center;
+  }
 }
