@@ -20,8 +20,6 @@ Memoteca é um aplicativo organizador de pensamentos e frases que permite cadast
 
 `Fetch API`: Utilizada para realizar requisições HTTP para comunicação com o servidor.
 
-`Axios`: Biblioteca usada para facilitar e simplificar as requisições HTTP.
-
 `Node.js`: Plataforma utilizada para executar o ambiente de desenvolvimento.
 
 `JSON Server`: Utilizado para simular um backend e facilitar o desenvolvimento e teste das operações CRUD.
