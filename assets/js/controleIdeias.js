@@ -58,7 +58,20 @@ const ControleIdeias = {
         this.reiniciarForm();
         renderizarIdeias();
     },
-
+    curtirIdeia: async function (iconeIdeia, ideia) {
+        let favorita;
+        if (iconeIdeia.src.endsWith("assets/imagens/favorite_outline.svg")) {
+            iconeIdeia.src = "assets/imagens/favorite.svg";
+            favorita = true;
+        } else {
+            iconeIdeia.src = "assets/imagens/favorite_outline.svg";
+            favorita = false;
+        }
+        ideia.conteudo = ideia.querySelector(".pensamento-conteudo").textContent;
+        ideia.autoria = ideia.querySelector(".pensamento-autoria").textContent;
+        ideia.favoritada = favorita;
+        await api.editarIdeia(ideia);
+    },
     gerarIdAleatorio: async function () {
         await this.renderizarIds();
         const caracteres = "abcdefghijklmnopqrstuvwxyz0987654321";
