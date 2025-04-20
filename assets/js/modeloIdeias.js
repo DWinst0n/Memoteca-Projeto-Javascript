@@ -12,11 +12,6 @@ export default async function renderizarIdeias(ideiaNova) {
         pensamentos = await api.buscarIdeias();
     }
     try {
-        if (!Array.isArray(pensamentos)) {
-            console.error("Erro: pensamentos não é um array", pensamentos);
-            pensamentos = [];
-        }
-
         pensamentos.forEach(ideia => {
             const itemIdeia = document.createElement("li");
             itemIdeia.classList.add("li-pensamento");
@@ -45,7 +40,7 @@ export default async function renderizarIdeias(ideiaNova) {
             const botaoCurtir =  document.createElement("button");
             botaoCurtir.classList.add("botao-curtir");
             const botaoCurtirImg = document.createElement("img");
-            botaoCurtirImg.src = "assets/imagens/favorite.svg";
+            botaoCurtirImg.src = ideia.favoritada? "assets/imagens/favorite.svg" : "assets/imagens/favorite_outline.svg";
             botaoCurtir.append(botaoCurtirImg);
             botaoCurtir.addEventListener("click", () => ControleIdeias.curtirIdeia(botaoCurtirImg, itemIdeia));
             
@@ -63,6 +58,7 @@ export default async function renderizarIdeias(ideiaNova) {
             botaoExcluir.append(botaoExcluirImg);
             botaoExcluir.addEventListener("click", () => ControleIdeias.removerIdeia(itemIdeia));
 
+            containerBotoes.append(botaoCurtir);
             containerBotoes.append(botaoEditar);
             containerBotoes.append(botaoExcluir);
 
