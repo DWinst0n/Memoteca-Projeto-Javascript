@@ -41,6 +41,13 @@ export default async function renderizarIdeias(ideiaNova) {
             const containerBotoes = document.createElement("div");
             containerBotoes.classList.add("icones");
             itemIdeia.append(containerBotoes);
+
+            const botaoCurtir =  document.createElement("button");
+            botaoCurtir.classList.add("botao-curtir");
+            const botaoCurtirImg = document.createElement("img");
+            botaoCurtirImg.src = "assets/imagens/favorite.svg";
+            botaoCurtir.append(botaoCurtirImg);
+            botaoCurtir.addEventListener("click", () => ControleIdeias.curtirIdeia(botaoCurtirImg, itemIdeia));
             
             const botaoEditar = document.createElement("button");
             botaoEditar.classList.add("botao-editar");
