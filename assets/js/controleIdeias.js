@@ -67,11 +67,14 @@ const ControleIdeias = {
             iconeIdeia.src = "assets/imagens/favorite_outline.svg";
             favorita = false;
         }
-        ideia.conteudo = ideia.querySelector(".pensamento-conteudo").textContent;
-        ideia.autoria = ideia.querySelector(".pensamento-autoria").textContent;
-        ideia.favoritada = favorita;
-        await api.editarIdeia(ideia);
+
+        const ideiaReferente = await api.buscarIdeiaPorId(ideia.id);
+        ideiaReferente.favoritada = favorita;
+
+        await api.editarIdeia(ideiaReferente);
+        renderizarIdeias();
     },
+
     gerarIdAleatorio: async function () {
         await this.renderizarIds();
         const caracteres = "abcdefghijklmnopqrstuvwxyz0987654321";

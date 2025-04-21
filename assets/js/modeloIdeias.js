@@ -10,6 +10,14 @@ export default async function renderizarIdeias(ideiaNova) {
     } else {
         listaPensamentos.innerHTML = "";
         pensamentos = await api.buscarIdeias();
+        pensamentos.sort((a,b) => {
+            const aPensamento = a.favoritada;
+            const bPensamento = b.favoritada;
+          
+            if (aPensamento && !bPensamento) return -1;
+            if (!aPensamento && bPensamento) return 1;
+            return 0;
+        })
     }
     try {
         pensamentos.forEach(ideia => {
