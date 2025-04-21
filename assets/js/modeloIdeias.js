@@ -3,7 +3,7 @@ import ControleIdeias from "./controleIdeias.js";
 
 const listaPensamentos = document.getElementById("lista-pensamentos");
 
-export default async function renderizarIdeias(ideiaNova) {
+export default async function renderizarIdeias(ideiaNova, filtro) {
     let pensamentos;
     if (ideiaNova) {
         pensamentos = [ideiaNova];
@@ -19,10 +19,31 @@ export default async function renderizarIdeias(ideiaNova) {
             return 0;
         })
     }
+    if (filtro) {
+        pensamentos.sort((a, b) => {
+            console.log(filtro);
+            const termo = filtro.toLowerCase();
+          
+            const aSoma = (a.conteudo.toLowerCase().includes(termo) ? 1 : 0) + (a.autoria.toLowerCase().includes(termo) ? 1 : 0);
+            const bSoma = (b.conteudo.toLowerCase().includes(termo) ? 1 : 0) + (b.autoria.toLowerCase().includes(termo) ? 1 : 0);
+          
+            return bSoma - aSoma;
+          });
+          const ideiasBuscadas = pensamentos.filter(pensamento => {
+            const termo = filtro.toLowerCase();
+            return (
+              pensamento.conteudo.toLowerCase().includes(termo) ||
+              pensamento.autoria.toLowerCase().includes(termo)
+            );
+          });
+          ideiasBuscadas.forEach(ideia => {
+            ideia.buscada = true;
+          })
+    }
     try {
         pensamentos.forEach(ideia => {
             const itemIdeia = document.createElement("li");
-            itemIdeia.classList.add("li-pensamento");
+            itemIdeia.classList.add("li-pensamento", ...(ideia.buscada ? ["buscado"] : []));
             itemIdeia.id = ideia.id;
 
             const aspasImg = document.createElement("img");

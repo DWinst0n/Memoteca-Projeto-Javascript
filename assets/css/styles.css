@@ -6,6 +6,7 @@
 
 :root {
   --Baby-blue: #DBE4EF;
+  --branco: white;
   --Azul-Dark: #041832;
   --Cinza-claro: #EDF0F4;
   --Cinza-medio: #8F8F8F;
@@ -218,10 +219,21 @@ h2, h3 {
   width: 100%;
   max-width: 92.5vw;
   margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
 }
 
 #lista-pensamentos-container h3 {
   margin: 2.5rem 0;
+}
+
+.busca__pensamentos {
+  background-color: transparent;
+  border: solid 1px var(--Azul-medio);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  width: clamp(11rem, 30.625%, 37.7rem);
+  margin: 1.5rem auto;
 }
 
 #lista-pensamentos {
@@ -237,7 +249,7 @@ h2, h3 {
   position: relative;
   padding: 1rem;
   padding-bottom: 2.5rem;
-  background: var(--Branco, #FFF);
+  background: var(--branco);
   box-shadow: 0.5rem 0.5rem 0px 0px #154580;
   flex: 2 1 clamp(5rem, 10vw, 75%);
   max-width: max-content;
@@ -247,6 +259,9 @@ h2, h3 {
   flex-direction: column;
   overflow-wrap: break-word;
   word-wrap: break-word;
+}
+.li-pensamento.buscado {
+  background: var(--Baby-blue);
 }
 
 .icone-aspas {
