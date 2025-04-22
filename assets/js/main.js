@@ -28,5 +28,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     botaoMostrarForm.onclick = () => ControleIdeias.alterarDisplay(true);
 
     const buscaPensamento = document.getElementById("buscaPensamentos")
-    buscaPensamento.addEventListener("input", () => renderizarIdeias(false, buscaPensamento.value))
+    buscaPensamento.addEventListener("input", () => {
+    const termoFiltrado = buscaPensamento.value.trim();
+    renderizarIdeias(false, termoFiltrado);
+    })
 });

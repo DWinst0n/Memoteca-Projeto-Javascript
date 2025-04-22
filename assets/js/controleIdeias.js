@@ -8,7 +8,7 @@ const idsGerados = new Set();
 
 let acaoFormTitulo = document.getElementById("form-titulo");
 
-let eventoEmAndamento = 0;
+let eventoEmAndamento = false;
 
 const ControleIdeias = {
     adicionarIdeia: async function() {
@@ -28,7 +28,7 @@ const ControleIdeias = {
         this.reiniciarForm();
     },
     removerIdeia(ideia) {
-        if (eventoEmAndamento === 1) {
+        if (eventoEmAndamento === true) {
             this.reiniciarForm();
         }
 
@@ -54,7 +54,7 @@ const ControleIdeias = {
         ideiaEncontrada.autoria = autor.value;
 
         await api.editarIdeia(ideiaEncontrada);
-        eventoEmAndamento--;
+        eventoEmAndamento = false;
         this.reiniciarForm();
         renderizarIdeias();
     },
@@ -101,15 +101,20 @@ const ControleIdeias = {
         acaoFormTitulo.textContent = "Adicione um pensamento novo:";
         conteudo.value = "";
         autor.value = "";
+        idReferente.value = "";
+        if (eventoEmAndamento === true) eventoEmAndamento = false;
         this.alterarDisplay();
-        if (eventoEmAndamento === 1) eventoEmAndamento--;
     },
     alterarDisplay (justAdd = false) {
-        const display = [".show__form", ".form__container"];
-        display.forEach(elemento => {
-            document.querySelector(elemento).classList.toggle("invisivel");
-        })
+        if (eventoEmAndamento == true) {} else {
+            const display = [".show__form", ".form__container"];
+            display.forEach(elemento => {
+                document.querySelector(elemento).classList.toggle("invisivel");
+            })
+        }
+
         if (justAdd) {
+            eventoEmAndamento = true;
             acaoFormTitulo.textContent = "Adicione um pensamento novo:";
             if (document.getElementById("botao-salvar").classList.contains("invisivel")) {
                 this.alterarDisplayBotoes();
@@ -135,12 +140,11 @@ const ControleIdeias = {
         const inicioForm = document.getElementById("form-titulo");
         inicioForm.scrollIntoView({ behavior: "smooth"});
 
-        if (eventoEmAndamento === 1) return;
         if (document.getElementById("botao-editar").classList.contains("invisivel")) {
             this.alterarDisplayBotoes();
         }
         this.alterarDisplay();
-        eventoEmAndamento++;
+        eventoEmAndamento = true;
     }
 };
 

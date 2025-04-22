@@ -21,7 +21,6 @@ export default async function renderizarIdeias(ideiaNova, filtro) {
     }
     if (filtro) {
         pensamentos.sort((a, b) => {
-            console.log(filtro);
             const termo = filtro.toLowerCase();
           
             const aSoma = (a.conteudo.toLowerCase().includes(termo) ? 1 : 0) + (a.autoria.toLowerCase().includes(termo) ? 1 : 0);
