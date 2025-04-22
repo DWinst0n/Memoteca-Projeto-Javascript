@@ -25,7 +25,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     
     mainFormulário.querySelector("#botao-cancelar").addEventListener("click", () => ControleIdeias.reiniciarForm());
     const botaoMostrarForm = document.querySelector(".show__form");
-    botaoMostrarForm.onclick = () => ControleIdeias.alterarDisplay(true);
+    botaoMostrarForm.onclick = () => {
+        ControleIdeias.IrAoForm();
+        ControleIdeias.alterarDisplay(true);
+    };
 
     const buscaPensamento = document.getElementById("buscaPensamentos")
     buscaPensamento.addEventListener("input", () => {

@@ -137,14 +137,17 @@ const ControleIdeias = {
         autor.value = ideiaAutor.textContent;
         idReferente.value = ideia.id;
 
-        const inicioForm = document.getElementById("form-titulo");
-        inicioForm.scrollIntoView({ behavior: "smooth"});
+        this.IrAoForm();
 
         if (document.getElementById("botao-editar").classList.contains("invisivel")) {
             this.alterarDisplayBotoes();
         }
         this.alterarDisplay();
         eventoEmAndamento = true;
+    },
+    IrAoForm () {
+        const inicioForm = document.getElementById("form-titulo");
+        inicioForm.scrollIntoView({ behavior: "smooth"});
     }
 };
 
