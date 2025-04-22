@@ -8,7 +8,8 @@
     {
       "id": "4c7d",
       "conteudo": "Da vida reclama, mas sem ela não vive!",
-      "autoria": "Mestre Yoda"
+      "autoria": "Mestre Yoda",
+      "favoritada": false
     },
     {
       "conteudo": "Nem na minha máquina funciona...",
@@ -146,16 +147,6 @@
       "id": "u13v",
       "conteudo": "A simplicidade é o último grau da sofisticação.",
       "autoria": "Leonardo da Vinci"
-    },
-    {
-      "id": "v24w",
-      "conteudo": "As palavras são, na minha nada humilde opinião, nossa inesgotável fonte de magia.",
-      "autoria": "Dumbledore"
-    },
-    {
-      "id": "w35x",
-      "conteudo": "Nada é verdade, tudo é permitido.",
-      "autoria": "Credo dos Assassinos"
     },
     {
       "id": "x46y",
