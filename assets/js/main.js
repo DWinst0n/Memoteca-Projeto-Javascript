@@ -30,9 +30,13 @@ window.addEventListener("DOMContentLoaded", async () => {
         ControleIdeias.alterarDisplay(true);
     };
 
-    const buscaPensamento = document.getElementById("buscaPensamentos")
+    const buscaPensamento = document.getElementById("buscaPensamentos");
+    let digitacao
     buscaPensamento.addEventListener("input", () => {
-    const termoFiltrado = buscaPensamento.value.trim();
-    renderizarIdeias(false, termoFiltrado);
+    clearTimeout(digitacao);
+    digitacao = setTimeout(() => {
+        const termoFiltrado = buscaPensamento.value.trim();
+        renderizarIdeias(false, termoFiltrado);
+    }, 500);
     })
 });
