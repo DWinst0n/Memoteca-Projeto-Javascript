@@ -58,23 +58,26 @@ const ControleIdeias = {
         this.reiniciarForm();
         renderizarIdeias();
     },
-    curtirIdeia: async function (iconeIdeia, ideia) {
+    curtirIdeia: async function (ideia) {
         let favorita;
-        if (iconeIdeia.src.endsWith("assets/imagens/favorite_outline.svg")) {
-            iconeIdeia.src = "assets/imagens/favorite.svg";
+        if (!ideia.favoritada) {
             favorita = true;
         } else {
-            iconeIdeia.src = "assets/imagens/favorite_outline.svg";
             favorita = false;
         }
-
         const ideiaReferente = await api.buscarIdeiaPorId(ideia.id);
         ideiaReferente.favoritada = favorita;
-
         await api.editarIdeia(ideiaReferente);
         renderizarIdeias();
     },
-
+    gerarDataAtual() {
+        const dataAtual = new Date();
+        const diaSemana = dataAtual.toLocaleDateString('pt-BR', { weekday: "long" });
+        const diaValor = dataAtual.getDate();
+        const mes = (dataAtual.toLocaleDateString('pt-BR', {month: "long"}));
+        const ano = dataAtual.getFullYear();
+        return `${diaSemana}, ${diaValor} de ${mes} de ${ano}`;
+    },
     gerarIdAleatorio: async function () {
         await this.renderizarIds();
         const caracteres = "abcdefghijklmnopqrstuvwxyz0987654321";

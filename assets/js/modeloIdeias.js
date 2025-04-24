@@ -70,7 +70,7 @@ export default async function renderizarIdeias(ideiaNova, filtro) {
             const botaoCurtirImg = document.createElement("img");
             botaoCurtirImg.src = ideia.favoritada? "assets/imagens/favorite.svg" : "assets/imagens/favorite_outline.svg";
             botaoCurtir.append(botaoCurtirImg);
-            botaoCurtir.addEventListener("click", () => ControleIdeias.curtirIdeia(botaoCurtirImg, itemIdeia));
+            botaoCurtir.addEventListener("click", () => ControleIdeias.curtirIdeia(ideia));
             
             const botaoEditar = document.createElement("button");
             botaoEditar.classList.add("botao-editar");
