@@ -32,20 +32,39 @@
       <section id="form-container" class="form__container invisivel">
         <form id="pensamento-form">
           <input type="hidden" id="pensamento-id"/>
+
           <label for="pensamento-conteudo">Pensamento</label>
           <textarea 
             id="pensamento-conteudo" 
             placeholder="Digite seu pensamento" 
             required></textarea>
+
           <label 
             for="pensamento-autoria">
               Autoria ou Fonte
             </label>
-          <input 
-            type="text" 
-            id="pensamento-autoria" 
-            placeholder="Insira a autoria ou fonte" 
-            required />
+              <input 
+                type="text" 
+                id="pensamento-autoria" 
+                placeholder="Insira a autoria ou fonte" 
+                required />
+                
+                <div class="data__container">
+                <label 
+                for="pensamento-data">
+                  Data
+                </label>
+                <div>              
+                    <input 
+                    type="date" 
+                    id="pensamento-data" 
+                    placeholder="Insira a data da citação" 
+                    required />
+                    <button type="button" class="botao__form" id="botao-dataAtual">
+                      Data atual
+                    </button>
+                  </div>
+          </div>
           <div class="form-botoes">
             <button 
               type="submit" 
@@ -60,7 +79,7 @@
             Editar
           </button>
             <button 
-              type="button" 
+              type="reset" 
               id="botao-cancelar"
               class="botao__form">
               Cancelar

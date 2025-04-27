@@ -150,9 +150,10 @@ h2, h3 {
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 1rem;
 }
 
-#pensamento-conteudo, #pensamento-autoria {
+#pensamento-conteudo, #pensamento-autoria, #pensamento-data {
   padding: 1rem;
   border-radius: 0.5rem;
   background: var(--Cinza-claro, #EDF0F4);
@@ -161,28 +162,43 @@ h2, h3 {
   resize: none; 
 }
 
+.data__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.data__container div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 #pensamento-conteudo {
   min-height: 5rem;
 }
 
 #pensamento-form label {
-  margin-bottom: 1rem;
   color: var(--Azul-Dark, #041832);
   font-family: var(--fonte-primaria);
   font-size: clamp(0.75rem, 3.5vw, 1.75rem);
   font-weight: 600;
 }
 
-#pensamento-conteudo::placeholder, #pensamento-autoria::placeholder {
+#pensamento-conteudo::placeholder, #pensamento-autoria::placeholder, #pensamento-data::placeholder {
   color: var(--Cinza-medio, #8F8F8F);
   font-family: var(--fonte-primaria);
   font-size: 1rem;
   font-weight: 400;
 }
 
+#pensamento-data {
+  margin-bottom: 0;
+  flex: 1 0;
+}
+
 #pensamento-form textarea,
 #pensamento-form input {
-  margin-bottom: 1.5rem;
   outline: none;
   border-style: none;
   font-size: 1.25rem;
@@ -206,14 +222,22 @@ h2, h3 {
   font-weight: 600;
 }
 
+
+
 #botao-salvar, #botao-editar {
   background: var(--Azul-Dark, #041832);
   border: none;
   min-width: 10rem;
 }
 
-#botao-cancelar {
+#botao-cancelar, #botao-dataAtual {
   color: var(--Azul-Dark, #041832);
+}
+
+#botao-dataAtual {
+  flex: 0;
+  padding: 0.5rem;
+  font-size: clamp(0.5rem, 1vw, 1rem);
 }
 
 #lista-pensamentos-container {

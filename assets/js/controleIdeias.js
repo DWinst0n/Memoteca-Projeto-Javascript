@@ -3,7 +3,8 @@ import renderizarIdeias from "./modeloIdeias.js";
 
 const conteudo = document.getElementById("pensamento-conteudo");
 const autor = document.getElementById("pensamento-autoria");
-const idReferente =  document.getElementById("pensamento-id");
+const idReferente = document.getElementById("pensamento-id");
+const data =  document.getElementById("pensamento-data");
 const idsGerados = new Set();
 
 let acaoFormTitulo = document.getElementById("form-titulo");
@@ -20,6 +21,7 @@ const ControleIdeias = {
             id: await ControleIdeias.gerarIdAleatorio(),
             conteudo: conteudo.value,
             autoria: autor.value,
+            data: data.value? this.definirData(data.value) : this.definirData()
         };
         
         await api.adicionarIdeia(pensamento);
@@ -70,13 +72,21 @@ const ControleIdeias = {
         await api.editarIdeia(ideiaReferente);
         renderizarIdeias();
     },
-    gerarDataAtual() {
-        const dataAtual = new Date();
-        const diaSemana = dataAtual.toLocaleDateString('pt-BR', { weekday: "long" });
-        const diaValor = dataAtual.getDate();
-        const mes = (dataAtual.toLocaleDateString('pt-BR', {month: "long"}));
-        const ano = dataAtual.getFullYear();
-        return `${diaSemana}, ${diaValor} de ${mes} de ${ano}`;
+    definirData(data) {
+        const dataReferente = data? new Date(data) : new Date();
+        const diaSemana = dataReferente.toLocaleDateString('pt-BR', { weekday: "long" });
+        const diaValor = String(dataReferente.getDate()).padStart(2, "0");
+        const mes = (dataReferente.toLocaleDateString('pt-BR', {month: "long"}));
+        const ano = dataReferente.getFullYear();
+        const utc = dataReferente.toISOString().split("T")[0];
+        return {
+            diaSemana,
+            diaValor,
+            mes,
+            ano,
+            completa: `${diaSemana}, ${diaValor} de ${mes} de ${ano}`,
+            utc
+        };    
     },
     gerarIdAleatorio: async function () {
         await this.renderizarIds();
