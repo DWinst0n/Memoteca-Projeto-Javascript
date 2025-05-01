@@ -94,8 +94,9 @@ export default async function renderizarIdeias(ideiaNova, filtro) {
             dataPensamento.classList.add("pensamento-data");
 
             const data = ControleIdeias.definirData(ideia.data).completa;
+            const dataFormatada = data.replace(/^(\w)/, (match) => match.toUpperCase());
 
-            dataPensamento.textContent = data;
+            dataPensamento.textContent = dataFormatada;
             itemIdeia.append(dataPensamento);
 
             listaPensamentos.append(itemIdeia);
