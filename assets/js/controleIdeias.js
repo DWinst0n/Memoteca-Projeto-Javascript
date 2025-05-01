@@ -11,10 +11,14 @@ let acaoFormTitulo = document.getElementById("form-titulo");
 
 let eventoEmAndamento = false;
 
+const regexConteudo = /^[A-Za-z0-9\s.,;:?!…()"—'\-]{5,}$/;
+
 const ControleIdeias = {
     adicionarIdeia: async function() {
-        if (!conteudo.value.trim() || !autor.value.trim()) {
-            alert("Preencha os dados da ideia corretamente!"); 
+        if (!conteudo.value.trim() || !autor.value.trim() || !this.validarRegex()) {
+            const RecusadoPeloRegex = this.validarRegex()? "" : "(Permitimos letras, números, sinais de pontuação e no mínimo 5 caracteres)"
+            alert(`Preencha os dados da ideia corretamente! ${RecusadoPeloRegex}`);
+            this.reiniciarForm(false); 
             return;
         }
         const pensamento = {
@@ -28,6 +32,9 @@ const ControleIdeias = {
         renderizarIdeias(pensamento);
         this.renderizarIds();
         this.reiniciarForm();
+    },
+    validarRegex() {
+        return (regexConteudo.test(conteudo.value));
     },
     removerIdeia(ideia) {
         if (eventoEmAndamento === true) {
@@ -115,14 +122,16 @@ const ControleIdeias = {
             idsGerados.add(ideia.id)
         });
     },
-    reiniciarForm () {
+    reiniciarForm (display = true) {
         acaoFormTitulo.textContent = "Adicione um pensamento novo:";
         conteudo.value = "";
         autor.value = "";
         idReferente.value = "";
         data.value = "";
-        if (eventoEmAndamento === true) eventoEmAndamento = false;
-        this.alterarDisplay();
+        if (display) {
+            if (eventoEmAndamento === true) eventoEmAndamento = false;
+            this.alterarDisplay();
+        }
     },
     alterarDisplay (justAdd = false) {
         if (eventoEmAndamento == true) {} else {
