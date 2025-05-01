@@ -9,6 +9,20 @@ window.addEventListener("DOMContentLoaded", async () => {
     
     renderizarIdeias();
 
+    const botaoMostrarForm = document.querySelector(".show__form");
+    botaoMostrarForm.onclick = () => {
+        ControleIdeias.IrAoForm();
+        ControleIdeias.alterarDisplay(true);
+    };
+
+    const valorData = document.getElementById("pensamento-data");
+    const hoje = ControleIdeias.definirData().toISOS;
+    valorData.max = hoje;
+    document.getElementById("botao-dataAtual").addEventListener("click", () => {
+        valorData.value = hoje;
+    })
+
+    mainFormulário.querySelector("#botao-cancelar").addEventListener("click", () => ControleIdeias.reiniciarForm());
     mainFormulário.addEventListener("submit", (e) => {
         e.preventDefault();
         switch (e.submitter.id) {
@@ -23,13 +37,6 @@ window.addEventListener("DOMContentLoaded", async () => {
         }
     });
     
-    mainFormulário.querySelector("#botao-cancelar").addEventListener("click", () => ControleIdeias.reiniciarForm());
-    const botaoMostrarForm = document.querySelector(".show__form");
-    botaoMostrarForm.onclick = () => {
-        ControleIdeias.IrAoForm();
-        ControleIdeias.alterarDisplay(true);
-    };
-
     const buscaPensamento = document.getElementById("buscaPensamentos");
     let digitacao
     buscaPensamento.addEventListener("input", () => {

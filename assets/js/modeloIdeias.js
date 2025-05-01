@@ -90,6 +90,14 @@ export default async function renderizarIdeias(ideiaNova, filtro) {
             containerBotoes.append(botaoEditar);
             containerBotoes.append(botaoExcluir);
 
+            const dataPensamento = document.createElement("p");
+            dataPensamento.classList.add("pensamento-data");
+
+            const data = ControleIdeias.definirData(ideia.data).completa;
+
+            dataPensamento.textContent = data;
+            itemIdeia.append(dataPensamento);
+
             listaPensamentos.append(itemIdeia);
         });
 

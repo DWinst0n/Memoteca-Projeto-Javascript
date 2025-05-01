@@ -21,7 +21,7 @@ const ControleIdeias = {
             id: await ControleIdeias.gerarIdAleatorio(),
             conteudo: conteudo.value,
             autoria: autor.value,
-            data: data.value? this.definirData(data.value) : this.definirData()
+            data: this.definirData(data.value).utc
         };
         
         await api.adicionarIdeia(pensamento);
@@ -54,6 +54,7 @@ const ControleIdeias = {
 
         ideiaEncontrada.conteudo = conteudo.value;
         ideiaEncontrada.autoria = autor.value;
+        
 
         await api.editarIdeia(ideiaEncontrada);
         eventoEmAndamento = false;
@@ -73,19 +74,23 @@ const ControleIdeias = {
         renderizarIdeias();
     },
     definirData(data) {
-        const dataReferente = data? new Date(data) : new Date();
-        const diaSemana = dataReferente.toLocaleDateString('pt-BR', { weekday: "long" });
-        const diaValor = String(dataReferente.getDate()).padStart(2, "0");
-        const mes = (dataReferente.toLocaleDateString('pt-BR', {month: "long"}));
-        const ano = dataReferente.getFullYear();
-        const utc = dataReferente.toISOString().split("T")[0];
+        const dataReferente = data? new Date (data) : new Date();
+
+        const utc = dataReferente.toUTCString();
+        const toISOS = dataReferente.toISOString().split("T")[0];
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            timeZone: 'UTC'
+        }
+        const completa = dataReferente.toLocaleDateString("pt-BR", options)
+
         return {
-            diaSemana,
-            diaValor,
-            mes,
-            ano,
-            completa: `${diaSemana}, ${diaValor} de ${mes} de ${ano}`,
-            utc
+            completa,
+            utc,
+            toISOS
         };    
     },
     gerarIdAleatorio: async function () {
@@ -115,6 +120,7 @@ const ControleIdeias = {
         conteudo.value = "";
         autor.value = "";
         idReferente.value = "";
+        data.value = "";
         if (eventoEmAndamento === true) eventoEmAndamento = false;
         this.alterarDisplay();
     },
@@ -140,14 +146,13 @@ const ControleIdeias = {
          document.getElementById(botao).classList.toggle("invisivel");
         })
     }, 
-    mostrarNoForm (ideia) {
-
-        const ideiaTexto = ideia.querySelector(".pensamento-conteudo");
-        const ideiaAutor = ideia.querySelector(".pensamento-autoria");
+    mostrarNoForm: async function (ideia) {
+        const ideiaReferente = await api.buscarIdeiaPorId(ideia.id)
 
         acaoFormTitulo.textContent = "Edite sua ideia:";
-        conteudo.value = ideiaTexto.textContent;
-        autor.value = ideiaAutor.textContent;
+        conteudo.value = ideiaReferente.conteudo;
+        autor.value = ideiaReferente.autoria;
+        data.value = this.definirData(ideiaReferente.data).toISOS;
         idReferente.value = ideia.id;
 
         this.IrAoForm();
